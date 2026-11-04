@@ -1,0 +1,24 @@
+# Caddy gets and renews the HTTPS certificate by itself. Replace your-domain.com everywhere (2 places + www).
+# Install:  sudo cp deploy/Caddyfile /etc/caddy/Caddyfile && sudo systemctl reload caddy
+
+www.your-domain.com {
+	redir https://your-domain.com{uri} permanent
+}
+
+your-domain.com {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	# photos are capped at 8 MB by the app; this stops oversized junk before it reaches it
+	request_body {
+		max_size 10MB
+	}
+
+	reverse_proxy 127.0.0.1:4190
+}

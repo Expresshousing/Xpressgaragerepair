@@ -1,0 +1,31 @@
+# Keeps the Xpress site running: starts on boot, restarts if it crashes.
+# Install:  sudo cp deploy/xpress.service /etc/systemd/system/xpress.service
+#           sudo systemctl daemon-reload && sudo systemctl enable --now xpress
+# Adjust the two paths below if you installed somewhere other than /opt/xpress/xpress-portal,
+# and ExecStart if `which node` prints a different location.
+[Unit]
+Description=Xpress Garage Doors website and portal
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=xpress
+Group=xpress
+WorkingDirectory=/opt/xpress/xpress-portal
+EnvironmentFile=/opt/xpress/xpress-portal/.env
+ExecStart=/usr/bin/node server.mjs
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+
+# Safety: the site can only write to its own data folder.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/xpress/xpress-portal/data
+ProtectKernelTunables=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target

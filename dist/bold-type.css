@@ -1,0 +1,95 @@
+/* Paystack-inspired type scale and breadth; preserve the approved hero and palette. */
+@font-face{font-family:Xpress Display;src:url('/assets/plus-jakarta-sans-variable.ttf') format('truetype');font-style:normal;font-weight:200 800;font-display:swap}
+:root{--gutter:max(4.5vw,calc((100vw - 1280px)/2))}
+.rp-container{width:88%;max-width:1280px}
+.ref-trust{width:88%;max-width:1280px;grid-template-columns:1fr;column-gap:0;padding-top:90px;padding-bottom:55px}
+.ref-trust-story{display:grid;grid-template-columns:1.1fr 1fr;column-gap:8%;align-items:center;grid-column:1/-1}
+.ref-trust-story>.eyebrow{grid-column:1;margin-bottom:18px;justify-self:start}
+.ref-trust-story>h2{grid-column:1;font-family:Xpress Display,Manrope,sans-serif;font-weight:800;font-size:clamp(38px,4vw,56px);line-height:1.1;letter-spacing:-1.8px;max-width:610px;margin-bottom:24px}
+.ref-trust-story>h2>span{color:#111}
+.ref-trust-story>p{grid-column:1;max-width:520px;font-size:18px;line-height:1.65}
+.ref-audiences{display:none}
+.ref-trust-facts{grid-column:2;grid-row:1/4;align-self:center;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:0}
+.ref-trust-facts>div{border-top:3px solid var(--accent);padding-top:22px}
+.ref-trust-facts dt{font-family:Xpress Display,Manrope,sans-serif;font-size:clamp(28px,3vw,44px);line-height:1.1;font-weight:800;letter-spacing:-1.6px;margin-bottom:13px;white-space:nowrap}
+.ref-trust-facts dd{font-size:15px;line-height:1.55;color:#555}
+.ref-brand-row{grid-column:1;margin-top:0;padding-top:35px;gap:45px}
+.ref-brand-row>p{font-size:14px;font-weight:600}
+.ref-brand-row img{width:95px;height:40px}
+/* Strong geometric headings, with readable supporting text. */
+.rp-about h2,.rp-center h2,.section h2,.page-heading h1,.state-hero h1,.contact-band h2,.door-contact h2{font-family:Xpress Display,Manrope,sans-serif;font-weight:800;letter-spacing:-1.6px;line-height:1.15}
+.section h2,.rp-center h2{font-size:clamp(34px,3.6vw,49px)}
+.rp-about h2{font-size:clamp(32px,3.2vw,44px)}
+.page-heading h1,.state-hero h1{font-size:clamp(40px,4.4vw,62px)}
+.door-contact h2,.contact-band h2{font-size:clamp(34px,3.6vw,49px)}
+.section h3,.rp-service-panel h3,.service-caption h3,.state-cards h3,.ref-trust-card h3{font-family:Xpress Display,Manrope,sans-serif;font-weight:800;letter-spacing:-.55px;line-height:1.3}
+.section h3,.service-caption h3{font-size:24px}
+.rp-service-panel h3{font-size:25px}
+.section p,.rp-about p,.page-heading>p,.state-hero>p,.contact-band p,.door-contact p{font-size:17px;line-height:1.7;color:#555}
+.section .detail-list p,.section .steps p,.rp-guide-grid p,.value p{font-size:17px}
+.rp-service-panel p{font-size:16px;line-height:1.65}
+.rp-service-panel ul{font-size:15px;line-height:1.6}
+.rp-tabs button{font-size:16px;font-weight:700;min-height:66px}
+.rp-icon{width:37px;height:37px}
+.rp-service-panel{padding:28px;min-height:378px}
+.rp-service-panel>img{height:320px}
+.rp-service-layout{gap:38px}
+.rp-values summary,.section summary{font-size:18px;font-weight:700}
+.rp-values details p,.section details p{font-size:16px;line-height:1.65}
+.rp-values details[open] p,.section details[open] p{color:#fff}
+.rp-about{padding-block:90px;gap:30px}
+.rp-about-photo{height:390px}
+.rp-services,.section{padding-block:90px}
+.rp-center{margin-bottom:48px}
+.section-head{margin-bottom:40px}
+.text-link{font-size:16px;font-weight:700}
+.section .button,.rp-about .button,.rp-service-panel .button,.contact-band .button,.door-contact .button{font-size:13px;font-weight:700;padding:15px 21px}
+.eyebrow,.micro{font-size:11px;letter-spacing:.05em}
+.state-cards h3{font-family:Xpress Display,Manrope,sans-serif;font-size:27px;font-weight:800;letter-spacing:-.8px}
+.state-cards p{font-size:16px;line-height:1.65}
+.state-phone{font-size:23px;font-weight:800}
+.state-cards article{padding:30px}
+.gallery-note,.section .gallery-note{font-size:12px}
+.gallery-grid{gap:32px}
+.caption{font-family:Xpress Display,Manrope,sans-serif;font-weight:700;font-size:17px}
+.caption span{font-family:Manrope,Arial,sans-serif;font-size:12px}
+.service-caption p{font-size:16px;line-height:1.65}
+.service-action{font-size:14px;font-weight:700}
+.location-list h3{font-size:20px}
+.location-list small{font-size:13px}
+.area-links a{font-size:16px}
+.contact-panel p,.contact-meta{font-size:15px;line-height:1.65}
+.contact-panel h3{font-family:Xpress Display,Manrope,sans-serif;font-weight:800;font-size:18px}
+.contact-panel .phone{font-size:32px;font-weight:800}
+.estimate-form h2{font-family:Xpress Display,Manrope,sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px}
+.estimate-form .form-intro{font-size:16px;line-height:1.65}
+.service-option{font-size:15px}.service-option small{font-size:11px}
+.field{font-size:14px}.estimate-form input,.estimate-form select,.estimate-form textarea{font-size:15px}
+.estimate-form .form-fine{font-size:12px;line-height:1.6}
+.footer-columns>div>a,.footer-office>a{font-size:14px;line-height:1.6}
+.footer-columns p{font-size:12px;line-height:1.65}.footer-columns .micro{font-size:10px}
+.footer-motto{font-size:16px;font-weight:700}.footer-bottomline{font-size:12px}
+@media(max-width:1100px){.ref-trust-story{column-gap:6%;grid-template-columns:1fr 1fr}.ref-trust-story>h2{font-size:44px}.ref-trust-facts{gap:18px}.ref-trust-facts dt{font-size:35px}.ref-trust-facts dd{font-size:13px}.rp-about{gap:24px}.rp-about h2{font-size:33px}.rp-about p{font-size:16px}.rp-values summary{font-size:16px}.rp-values details p{font-size:14px}.rp-service-panel{padding:23px;gap:21px}.rp-tabs button{font-size:14px;padding:12px}.rp-service-panel h3{font-size:22px}.rp-service-panel p{font-size:15px}.rp-service-panel ul{font-size:13px}.section h2,.rp-center h2{font-size:39px}.section p{font-size:16px}.state-cards article{padding:24px}.state-cards h3{font-size:24px}.state-phone{font-size:20px}}
+@media(max-width:900px){.ref-trust-story{grid-template-columns:1fr;gap:0}.ref-trust-story>h2{font-size:44px;max-width:650px}.ref-trust-story>p{max-width:600px}.ref-trust-facts{grid-column:1;grid-row:auto;max-width:650px;width:100%;margin-top:24px;gap:30px}.ref-trust-facts dt{font-size:38px}.ref-trust-facts dd{font-size:15px}.ref-brand-row{gap:25px}.ref-brand-row img{width:76px}.rp-about-photo{height:380px}.rp-service-layout{gap:24px}.rp-tabs button{font-size:13px;gap:8px}.rp-service-panel{grid-template-columns:.85fr 1fr;padding:20px;gap:18px}.rp-service-panel>img{height:320px}.rp-service-panel h3{font-size:21px}.rp-service-panel p{font-size:14px}.rp-service-panel ul{font-size:12px}.rp-service-panel .button{font-size:12px;padding:13px 16px}.section h2,.rp-center h2{font-size:36px}}
+@media(max-width:650px){:root{--gutter:6vw}.rp-container{width:88%}.ref-trust{width:88%;padding:58px 0 35px;gap:30px}.ref-trust-story>h2{font-size:38px;line-height:1.15;letter-spacing:-1.3px}.ref-trust-story>p{font-size:17px;line-height:1.65}.ref-trust-facts{gap:17px;margin-top:18px}.ref-trust-facts>div{padding-top:18px;border-top-width:2px}.ref-trust-facts dt{font-size:29px;letter-spacing:-1px}.ref-trust-facts dd{font-size:12px}.ref-brand-row{padding-top:25px}.ref-brand-row>p{font-size:13px}.ref-brand-row img{width:76px;height:34px}.rp-about,.section,.rp-services{padding-block:58px}.rp-about h2{font-size:34px;line-height:1.18}.rp-about p{font-size:17px}.rp-about-photo{height:330px}.rp-about{gap:25px}.rp-values summary,.section summary{font-size:17px}.rp-values details p,.section details p{font-size:16px}.rp-center h2,.section h2{font-size:32px;line-height:1.2;letter-spacing:-1.1px}.section p,.section .detail-list p,.section .steps p,.rp-guide-grid p,.value p{font-size:17px;line-height:1.65}.section h3,.service-caption h3{font-size:23px}.rp-tabs button{font-size:15px;min-height:57px;padding:11px 14px;gap:12px}.rp-service-layout{grid-template-columns:1fr;gap:25px}.rp-service-panel{grid-template-columns:1fr;padding:22px;gap:22px}.rp-service-panel>img{height:260px}.rp-service-panel h3{font-size:25px}.rp-service-panel p{font-size:17px}.rp-service-panel ul{font-size:15px}.rp-service-panel .button{font-size:13px;padding:14px 20px}.rp-center{margin-bottom:32px}.section-head{margin-bottom:30px}.state-cards h3{font-size:26px}.state-cards p{font-size:17px}.state-phone{font-size:23px}.page-heading h1,.state-hero h1{font-size:39px;line-height:1.18;letter-spacing:-1.3px}.page-heading>p{font-size:17px;line-height:1.65}.door-contact h2,.contact-band h2{font-size:33px}.contact-band p,.door-contact p{font-size:17px}.contact-panel .phone{font-size:29px}.contact-panel p{font-size:15px}.estimate-form h2{font-size:31px}.service-option{font-size:13px}.service-option small{font-size:10px}.estimate-form input,.estimate-form select,.estimate-form textarea{font-size:16px}.footer-columns>div>a,.footer-office>a{font-size:13px}.footer-columns p{font-size:12px}}
+/* Requested follow-up: carry the same heavy geometric typography into hero and header. */
+.door-logo{font-family:Xpress Display,Manrope,sans-serif;font-weight:800}
+.desktop-menu,.rp-pages,.mobile-navigation{font-family:Xpress Display,Manrope,sans-serif;font-weight:600}
+.desktop-menu,.rp-pages{font-size:14px}
+.home-page .desktop-menu{font-size:14px}
+.home-page .desktop-menu .rp-pages{font-size:14px}
+.header-estimate{font-family:Xpress Display,Manrope,sans-serif;font-weight:800}
+.ref-headline h1{font-family:Xpress Display,Manrope,sans-serif;font-size:clamp(42px,4vw,54px);font-weight:800;line-height:1.18;letter-spacing:-1.6px}
+.ref-headline h1>span{color:#60675e}
+.ref-quicklinks a,.ref-request{font-family:Xpress Display,Manrope,sans-serif;font-weight:600}
+.ref-quicklinks a{font-size:12px}
+.ref-request{font-size:13px}
+.ref-note p{font-size:14px;line-height:1.6}.ref-note>a{font-size:12px;font-weight:700}
+.hero-estimate h2{font-family:Xpress Display,Manrope,sans-serif;font-weight:800;font-size:30px;line-height:1.2;letter-spacing:-1px}
+.hero-estimate>p{font-size:13px;line-height:1.6}
+.hero-estimate form>button{font-family:Xpress Display,Manrope,sans-serif;font-weight:800}
+.hero-estimate>.hero-estimate-fine{font-size:8px}
+@media(max-width:1100px){.home-page .desktop-menu{font-size:12px;gap:12px}.home-page .desktop-menu .rp-pages{font-size:12px}.ref-headline h1{font-size:46px}.ref-note p{font-size:12px}.hero-estimate h2{font-size:28px}}
+@media(max-width:900px){.ref-headline h1{font-size:42px}.hero-estimate h2{font-size:26px}.hero-estimate>p{font-size:12px}}
+@media(max-width:650px){.ref-headline h1{font-size:34px;line-height:1.17;letter-spacing:-1.2px}.home-page .door-logo{font-size:20px}.hero-estimate h2{font-size:28px}.hero-estimate>p{font-size:13px}.ref-quicklinks a{font-size:11px}.ref-request{font-size:12px}}
+@media(max-width:370px){.ref-headline h1{font-size:31px}.hero-estimate h2{font-size:25px}}

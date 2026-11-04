@@ -1,0 +1,1 @@
+(()=>{const form=document.querySelector('#hero-estimate-form');if(!form)return;const state=form.querySelector('[name=state]');const picker=document.querySelector('#site-state');function sync(){state.value=picker?.value||'PA'}sync();picker?.addEventListener('change',sync);form.addEventListener('submit',sync)})();

@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How did we do? | Xpress Garage Doors</title><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><link rel="icon" href="/assets/cropped-logo-1-32x32.png">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Manrope,Arial,sans-serif;background:#f6f4f4;color:#111;min-height:100vh}
+.top{background:#fff;border-bottom:1px solid #e8e5e3;padding:16px 5vw}.top a{font-weight:800;font-size:20px;text-decoration:none;color:inherit;letter-spacing:-.03em}
+main{max-width:520px;margin:6vh auto;padding:0 20px}.card{background:#fff;border:1px solid #e8e5e3;border-radius:24px;padding:32px}
+h1{font-size:30px;letter-spacing:-.03em;margin:0 0 8px}p{color:#555;line-height:1.5}
+.stars{display:flex;gap:6px;justify-content:center;margin:22px 0 8px;border:0;padding:0}.stars legend{position:absolute;left:-9999px}
+.stars input{position:absolute;opacity:0}.stars label{font-size:46px;line-height:1;cursor:pointer;color:#d9d4d1;transition:transform .1s;padding:2px}
+.stars label:hover{transform:scale(1.12)}.stars label.on{color:#ef4b00}.stars input:focus-visible+label{outline:3px solid #111;border-radius:8px}
+.hint{text-align:center;color:#626262;font-size:14px;min-height:20px;margin:0 0 14px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#444;margin-top:12px;line-height:1.4}.consent input{margin-top:3px;width:18px;height:18px;flex:none}
+textarea{width:100%;font:inherit;padding:14px;border:1px solid #d9d4d1;border-radius:14px;min-height:110px;resize:vertical}
+.btn{display:inline-block;background:#ef4b00;color:#fff;border:0;border-radius:30px;padding:15px 26px;font:800 15px inherit;font-family:inherit;text-decoration:none;cursor:pointer;width:100%;text-align:center;margin-top:14px}
+.btn.ghost{background:#fff;color:#111;border:1px solid #cfc9c6}.btn:disabled{opacity:.5;cursor:not-allowed}.err{color:#b3261e;font-size:14px;min-height:20px}.small{font-size:12px;color:#777;text-align:center;margin-top:14px}
+</style></head><body>
+<div class="top"><a href="/">Xpress Garage</a></div>
+<main><div class="card" id="c"><p>Loading…</p></div></main>
+<script>
+const $=s=>document.querySelector(s),c=$('#c'),token=new URLSearchParams(location.search).get('t')||'';
+const esc=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+const WORDS=['','Poor','Fair','Good','Very good','Excellent'];
+let info=null,rating=0;
+async function init(){
+  if(!token)return bad();
+  try{const r=await fetch('/api/review/'+encodeURIComponent(token));if(!r.ok)return bad();info=await r.json();rating=info.rating||0;form()}catch{bad()}
+}
+function bad(){c.innerHTML='<h1>This link isn’t valid</h1><p>It may have expired. If you’d like to leave feedback, please call us at <a href="tel:+12153971926">215-397-1926</a> or sign in to your <a href="/account/">account</a>.</p>'}
+function form(){
+  c.innerHTML=`<h1>How did we do, ${esc(info.firstName)}?</h1><p>Thanks for choosing Xpress for your <b>${esc(info.service)}</b> in ${esc(info.city)}. Tap a star rating:</p>
+  <form novalidate><fieldset class="stars"><legend>Your rating</legend>${[1,2,3,4,5].map(n=>`<input type="radio" name="r" id="r${n}" value="${n}" ${rating===n?'checked':''}><label for="r${n}" aria-label="${n} star${n>1?'s':''}" data-n="${n}">★</label>`).join('')}</fieldset><p class="hint" id="hint"></p>
+  <textarea name="comment" maxlength="1000" placeholder="Anything you’d like to add? (optional)" aria-label="Comment">${esc(info.comment)}</textarea>
+  <label class="consent"><input type="checkbox" name="publicOk" ${info.publicOk?'checked':''}> <span>You may show my comment on the Xpress website, with my first name, last initial and town.</span></label><p class="err" id="err" role="alert"></p>
+  <button class="btn" id="go" ${rating?'':'disabled'}>${info.rating?'Update my feedback':'Send feedback'}</button></form>
+  <p class="small">Your feedback goes to our team. It’s only shown publicly if you tick the box above.</p>`;
+  paint();
+  c.querySelectorAll('input[name=r]').forEach(i=>i.onchange=()=>{rating=+i.value;paint();$('#go').disabled=false});
+  c.querySelectorAll('.stars label').forEach(l=>{l.onmouseenter=()=>paint(+l.dataset.n);l.onmouseleave=()=>paint()});
+  $('form',c).onsubmit=async e=>{e.preventDefault();if(!rating)return;$('#go').disabled=true;$('#err').textContent='';
+    try{const r=await fetch('/api/review/'+encodeURIComponent(token),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({rating,comment:e.target.comment.value,publicOk:e.target.publicOk.checked})}),j=await r.json();if(!r.ok)throw new Error(j.error||'Something went wrong');done(j.googleUrl)}catch(x){$('#err').textContent=x.message;$('#go').disabled=false}};
+}
+function paint(h){const v=h||rating;c.querySelectorAll('.stars label').forEach(l=>l.classList.toggle('on',+l.dataset.n<=v));$('#hint').textContent=v?WORDS[v]:'Choose a rating'}
+function done(google){
+  const low=rating<=3;
+  c.innerHTML=`<h1>${low?'Thank you for telling us':'Thank you!'}</h1><p>${low?'We’re sorry we didn’t get it fully right. A member of our team will look at your feedback today and may reach out to make it right. You can also call us any time at <a href="tel:+12153971926">215-397-1926</a>.':'We really appreciate it. It means a lot to a local team like ours.'}</p>
+  ${google?`<p>${low?'If you’d also like to share your experience publicly, you’re welcome to:':'Would you share this on Google so your neighbors can find us too? It takes a minute.'}</p><a class="btn" id="g" href="${esc(google)}" target="_blank" rel="noopener">Review us on Google</a>`:''}
+  <a class="btn ghost" href="/">Back to website</a>`;
+  const g=$('#g');if(g)g.onclick=()=>{navigator.sendBeacon?navigator.sendBeacon('/api/review/'+encodeURIComponent(token)+'/click'):fetch('/api/review/'+encodeURIComponent(token)+'/click',{method:'POST'})};
+}
+init();
+</script></body></html>
