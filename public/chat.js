@@ -39,7 +39,19 @@
   function toggle(v) {
     open = v; panel.hidden = !v; fab.setAttribute('aria-expanded', String(v)); fab.classList.toggle('xp-hide', v && innerWidth < 600);
     if (v) { dot.hidden = true; status(); if (token) { intro.hidden = true; compose.hidden = false; poll(); } else { showIntro(); prefill(); } setTimeout(() => (token ? compose.message : intro.name).focus(), 50); }
+    lockPage(v);
     loop();
+  }
+  // Phones: the chat is a full-screen page; freeze the page behind it so nothing shifts, and follow the keyboard.
+  let savedY = 0, vvBound = false;
+  const full = () => innerWidth <= 600;
+  function fit() { if (open && full()) { panel.style.height = (window.visualViewport ? visualViewport.height : innerHeight) + 'px'; panel.style.top = (window.visualViewport ? visualViewport.offsetTop : 0) + 'px'; } else { panel.style.height = ''; panel.style.top = ''; } }
+  function lockPage(v) {
+    const on = v && full(), b = document.body, h = document.documentElement;
+    if (on && !h.classList.contains('xp-lock')) { savedY = scrollY; b.style.top = -savedY + 'px'; h.classList.add('xp-lock'); }
+    if (!on && h.classList.contains('xp-lock')) { h.classList.remove('xp-lock'); b.style.top = ''; scrollTo(0, savedY); }
+    if (window.visualViewport && !vvBound) { vvBound = true; visualViewport.addEventListener('resize', fit); visualViewport.addEventListener('scroll', fit); }
+    fit();
   }
   fab.addEventListener('click', () => toggle(!open)); $('.xp-x', root).addEventListener('click', () => toggle(false));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && open) toggle(false); });
