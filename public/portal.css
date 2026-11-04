@@ -138,3 +138,21 @@
   .door-header .door-logo small{font-size:5.5px!important;letter-spacing:.9px!important;margin-top:2px}
 }
 @media(max-width:360px){.door-header .door-logo{font-size:14px!important;gap:4px}.door-header .door-logo svg{width:17px!important;height:22px!important}}
+
+/* Mobile stability: block sideways drifting/rubber-banding and the load-time hero zoom */
+@media(max-width:900px){
+  html,body{overflow-x:clip;overscroll-behavior-x:none;max-width:100%}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  .hero>img,.ref-hero img{animation:none!important}
+  .home-page .door-header:before{max-width:100%}
+}
+
+/* Sideways drift: hard-lock horizontal scrolling on phones (hidden for older iOS, clip where supported) */
+@media(max-width:900px){
+  html,body{overflow-x:hidden;overflow-x:clip;width:100%;position:relative;touch-action:pan-y pinch-zoom;overscroll-behavior-x:none}
+  main,footer,header,section{max-width:100vw}
+  img,video,iframe,table{max-width:100%}
+}
+
+/* Mobile menu: account entry */
+.mobile-navigation .mobile-account{margin-top:14px;display:block;text-align:center;background:#ef4b00;color:#fff!important;font-weight:800;border-radius:30px;padding:14px 18px;text-decoration:none}
