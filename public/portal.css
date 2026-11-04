@@ -93,3 +93,48 @@
   .door-header .mobile-menu-toggle[aria-expanded=true]{background-image:linear-gradient(45deg,transparent 46%,#111 46% 54%,transparent 54%),linear-gradient(-45deg,transparent 46%,#111 46% 54%,transparent 54%);background-size:20px 20px;background-position:center}
 }
 @media(max-width:360px){.door-header .door-logo small{display:none}.door-header .header-estimate{padding:0 10px!important;font-size:11.5px!important}}
+
+/* Mobile: phone pill + menu button are sized to sit inside the white corner wedge (top-right of the header) */
+@media(max-width:650px){
+  .door-header .header-tools,.home-page .door-header .header-tools{align-self:flex-start;margin-top:7px;gap:5px!important}
+  .door-header .header-estimate,.home-page .door-header .header-estimate{height:28px;padding:0 10px!important;font-size:11px!important;gap:4px}
+  .door-header .header-estimate svg{width:10px;height:10px}
+  .door-header .mobile-menu-toggle{width:28px;height:28px;border-radius:9px;background-size:14px 2px;background-position:center 8px,center 13px,center 18px}
+  .door-header .mobile-menu-toggle[aria-expanded=true]{background-size:14px 14px;background-position:center}
+  .door-header,.home-page .door-header{padding-right:10px!important}
+}
+@media(max-width:360px){.door-header .header-tools{gap:4px!important}.door-header .header-estimate{height:26px;padding:0 7px!important;font-size:9.5px!important;gap:3px;letter-spacing:-.2px}.door-header .mobile-menu-toggle{width:26px;height:26px;background-position:center 7px,center 12px,center 17px}}
+
+/* Mobile: even smaller phone pill so it sits well inside the white corner */
+@media(max-width:650px){
+  .door-header .header-tools,.home-page .door-header .header-tools{margin-top:9px;gap:4px!important}
+  .door-header .header-estimate,.home-page .door-header .header-estimate{height:23px;padding:0 8px!important;font-size:9.5px!important;gap:3px;letter-spacing:-.1px}
+  .door-header .mobile-menu-toggle{width:23px;height:23px;border-radius:8px;background-size:12px 2px;background-position:center 6px,center 10.5px,center 15px}
+  .door-header .mobile-menu-toggle[aria-expanded=true]{background-size:12px 12px}
+}
+@media(max-width:360px){.door-header .header-estimate{height:22px;padding:0 6px!important;font-size:8.5px!important}.door-header .mobile-menu-toggle{width:22px;height:22px;background-position:center 6px,center 10px,center 14px}}
+
+/* Mobile: phone pill + menu button fill the white corner (the "crack") */
+@media(max-width:650px){
+  .door-header .header-tools,.home-page .door-header .header-tools{margin-top:6px;gap:4px!important}
+  .door-header .header-estimate,.home-page .door-header .header-estimate{height:32px;padding:0 9px!important;font-size:11px!important;gap:4px;letter-spacing:0}
+  .door-header .mobile-menu-toggle{width:32px;height:32px;border-radius:10px;background-size:15px 2px;background-position:center 10px,center 15px,center 20px}
+  .door-header .mobile-menu-toggle[aria-expanded=true]{background-size:15px 15px}
+}
+@media(max-width:360px){.door-header .header-estimate{height:29px;padding:0 6px!important;font-size:9.5px!important}.door-header .mobile-menu-toggle{width:29px;height:29px;background-position:center 8px,center 13px,center 18px}}
+
+/* Mobile: logo block is the same height as the phone pill */
+@media(max-width:650px){
+  .door-header .door-logo,.home-page .door-header .door-logo{font-size:21px!important;gap:7px;line-height:1}
+  .door-header .door-logo svg{width:26px!important;height:32px!important}
+  .door-header .door-logo small{font-size:6.5px!important;letter-spacing:1px!important;margin-top:2px}
+}
+@media(max-width:360px){.door-header .door-logo{font-size:16px!important}.door-header .door-logo svg{width:20px!important;height:26px!important}.door-header .door-logo small{display:none}}
+
+/* Mobile: smaller logo on the same horizontal line as the phone pill and menu button */
+@media(max-width:650px){
+  .door-header .door-logo,.home-page .door-header .door-logo{align-self:flex-start;margin-top:6px;height:32px;display:flex;align-items:center;font-size:17px!important;gap:6px}
+  .door-header .door-logo svg{width:20px!important;height:26px!important}
+  .door-header .door-logo small{font-size:5.5px!important;letter-spacing:.9px!important;margin-top:2px}
+}
+@media(max-width:360px){.door-header .door-logo{font-size:14px!important;gap:4px}.door-header .door-logo svg{width:17px!important;height:22px!important}}
