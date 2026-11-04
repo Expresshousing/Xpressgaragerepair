@@ -1,0 +1,43 @@
+# Render Blueprint for the Xpress backend (website + accounts + quotes + chat + admin).
+# The app stores a SQLite database and customer photos on disk, so it needs a
+# paid web service with a persistent disk (free instances lose their files on every deploy).
+services:
+  - type: web
+    name: xpress-garage-doors
+    runtime: node
+    plan: starter
+    region: ohio            # closest to PA/NJ
+    buildCommand: node build.mjs
+    startCommand: node server.mjs
+    healthCheckPath: /healthz
+    autoDeploy: true
+    disk:
+      name: xpress-data
+      mountPath: /var/data
+      sizeGB: 5
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: DATA_DIR
+        value: /var/data
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SITE_URL            # set to your real https:// address (no trailing slash)
+        sync: false
+      - key: ADMIN_PASSWORD      # one-time setup key for the first owner account
+        generateValue: true
+      # Optional channels: each switches on once filled in (see .env.example)
+      - key: RESEND_API_KEY
+        sync: false
+      - key: ALERT_EMAIL_FROM
+        sync: false
+      - key: ALERT_EMAIL_TO
+        sync: false
+      - key: ALERT_REPLY_TO
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: REVIEW_GOOGLE_URL
+        sync: false
