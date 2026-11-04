@@ -78,3 +78,18 @@
 .sr-note{font-size:12px;color:#626262;max-width:720px;margin:18px 0 0}
 @media(max-width:700px){.sr-agg{text-align:left;margin-top:10px}}
 [data-site-reviews] .state-cards article{background:#fff;border:1px solid #e8e5e3}
+
+/* Mobile header: compact logo on the left, phone pill centred in the space, proper three-line menu button */
+@media(max-width:650px){
+  .door-header,.home-page .door-header{padding-inline:14px!important;gap:8px!important}
+  .door-header .door-logo,.home-page .door-header .door-logo{font-size:17px!important;gap:6px;flex:0 1 auto;min-width:0;margin-left:0}
+  .door-header .door-logo svg{width:20px!important;height:auto}
+  .door-header .door-logo small{font-size:5.5px!important;letter-spacing:.9px!important;white-space:nowrap}
+  .door-header .header-tools,.home-page .door-header .header-tools{gap:8px!important;margin-left:auto;align-items:center;flex:none}
+  .door-header .header-estimate,.home-page .door-header .header-estimate{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 13px!important;font-size:12.5px!important;line-height:1;white-space:nowrap;border-radius:999px}
+  .door-header .header-estimate svg{width:13px;height:13px}
+  .door-header .mobile-menu-toggle{display:block;flex:none;width:40px;height:40px;padding:0!important;font-size:0!important;line-height:0;border:0;border-radius:12px;cursor:pointer;
+    background-color:#f0f1ed;background-repeat:no-repeat;background-image:linear-gradient(#111,#111),linear-gradient(#111,#111),linear-gradient(#111,#111);background-size:18px 2px;background-position:center 13px,center 19px,center 25px}
+  .door-header .mobile-menu-toggle[aria-expanded=true]{background-image:linear-gradient(45deg,transparent 46%,#111 46% 54%,transparent 54%),linear-gradient(-45deg,transparent 46%,#111 46% 54%,transparent 54%);background-size:20px 20px;background-position:center}
+}
+@media(max-width:360px){.door-header .door-logo small{display:none}.door-header .header-estimate{padding:0 10px!important;font-size:11.5px!important}}
