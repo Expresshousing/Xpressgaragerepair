@@ -113,3 +113,12 @@ details[open] p{}
 .rp-dropdown a{border-radius:12px}
 .rp-dropdown a:hover{}
 @media(max-width:650px){.rp-service-panel,.contact-panel,.service-card,.mobile-coverage{border-radius:22px}.rp-about-photo,.gallery-item .photo{border-radius:20px}.rp-tabs button{border-radius:28px}.interior-page .door-header:before{width:44%}.region-mobile-call{}.region-mobile-call a:first-child{}.estimate-form input:not([type=radio]),.estimate-form select,.estimate-form textarea{font-size:16px}.ref-trust-card p{}}
+
+/* Contact page on phones: the estimate form ("Let's make it personal") comes first; "Tell us about your door" sits below it. */
+@media(max-width:900px){
+main:has(.contact-layout){display:flex;flex-direction:column}
+main:has(.contact-layout)>.contact-layout{order:1;grid-template-columns:1fr;gap:28px;padding-top:24px}
+main:has(.contact-layout)>.page-heading{order:2}
+main:has(.contact-layout)>:not(.contact-layout):not(.page-heading){order:3}
+.contact-layout>.estimate-form{order:-1}
+}
