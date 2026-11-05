@@ -172,3 +172,8 @@ html.xp-lock body{position:fixed;left:0;right:0;width:100%}
   .xp-x{width:44px;height:44px;font-size:22px;line-height:1;border-radius:50%;background:#ffffff22;padding:0}
   .xp-body{overscroll-behavior:contain}
 }
+
+/* Headings sit higher now that the small section labels are gone */
+.interior-page .page-heading{padding-top:26px!important;padding-bottom:44px!important}
+.state-hero{padding-top:34px!important}
+@media(max-width:650px){.interior-page .page-heading{padding-top:14px!important;padding-bottom:28px!important}.state-hero{padding-top:22px!important}}
